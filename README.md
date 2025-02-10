@@ -13,3 +13,5 @@
 - typescript
 - tailwindcss
 - shadcn ui (библиотека компонентов)
+- prettier
+- lucide (иконки)

@@ -44,10 +44,6 @@ html {
     }
 }
 
-* {
-    font-family: var(--font-nunito), sans-serif;
-}
-
 .scrollbar::-webkit-scrollbar {
     width: 4px;
 }
