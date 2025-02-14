@@ -1,6 +1,6 @@
 # 🍕 NextPizza / Разработка FullStack интернет-магазина (клон ДодоПиццы)
 
-### Автор обучалки https://github.com/archakov06
+### Автор обучалки [Archakov Dennis](https://github.com/archakov06)
 
 ▶️ Делаю по видео на ютуб [ссылка](https://www.youtube.com/watch?v=GUwizGbY4cc)  
 🎨 Figma-дизайн: [тут](https://www.figma.com/design/cYz4fOSK74EJoqHxoNr1hT/Next-Pizza)  
