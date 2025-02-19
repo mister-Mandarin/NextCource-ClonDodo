@@ -1,5 +1,6 @@
 import { Input, RangeSlider, Title } from '@/components/ui';
-import { FilterCheckbox } from '@/components/shared/FilterCheckbox';
+import { FilterCheckboxGroup, FilterCheckbox } from '@/components/shared';
+import { ITEMS } from '@/components/shared/leftFilter/helper';
 
 export function Filters() {
   return (
@@ -18,6 +19,8 @@ export function Filters() {
         </div>
         <RangeSlider min={0} max={2000} step={10} value={[0, 2000]} />
       </div>
+
+      <FilterCheckboxGroup title="Ингридиенты:" className="mt-5" items={ITEMS} />
     </div>
   );
 }

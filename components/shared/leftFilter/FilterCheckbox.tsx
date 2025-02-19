@@ -1,12 +1,5 @@
 import { Checkbox } from '@/components/ui';
-
-interface FilterCheckboxProps {
-  text: string;
-  value: string;
-  endAdornment?: React.ReactNode;
-  onCheckedChange?: (checked: boolean) => void;
-  checked?: boolean;
-}
+import { FilterCheckboxProps } from '@/components/shared/leftFilter/helper';
 
 export function FilterCheckbox({ text, value, endAdornment, onCheckedChange, checked }: FilterCheckboxProps) {
   return (
