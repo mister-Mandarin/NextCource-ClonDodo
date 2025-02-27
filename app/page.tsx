@@ -1,6 +1,5 @@
 import { Container, Filters, TopBar } from '@/components/shared';
 import { Title } from '@/components/ui';
-import { ProductCard } from '@/components/shared/Products/ProductCard';
 import { ProductsList } from '@/components/shared/Products/ProductsList';
 
 export default function Home() {
@@ -19,7 +18,7 @@ export default function Home() {
         <div className="flex-1">
           <div className="flex flex-col gap-16">
             <ProductsList
-              title="Все пиццы"
+              title="Пиццы"
               categoryId={1}
               items={[
                 {
@@ -59,6 +58,55 @@ export default function Home() {
                 },
                 {
                   id: 6,
+                  name: 'Классическая',
+                  imageUrl: 'https://media.dodostatic.net/image/r:233x233/11ef9a30c3246adebecb726548cbede9.avif',
+                  price: 990,
+                  items: [{ price: 990 }],
+                },
+              ]}
+            />
+
+            <ProductsList
+              title="Комбо"
+              categoryId={2}
+              items={[
+                {
+                  id: 7,
+                  name: 'Классическая',
+                  imageUrl: 'https://media.dodostatic.net/image/r:233x233/11ef9a30c3246adebecb726548cbede9.avif',
+                  price: 990,
+                  items: [{ price: 990 }],
+                },
+                {
+                  id: 8,
+                  name: 'Классическая',
+                  imageUrl: 'https://media.dodostatic.net/image/r:233x233/11ef9a30c3246adebecb726548cbede9.avif',
+                  price: 990,
+                  items: [{ price: 990 }],
+                },
+                {
+                  id: 9,
+                  name: 'Классическая',
+                  imageUrl: 'https://media.dodostatic.net/image/r:233x233/11ef9a30c3246adebecb726548cbede9.avif',
+                  price: 990,
+                  items: [{ price: 990 }],
+                },
+                {
+                  id: 10,
+                  name: 'Классическая',
+                  imageUrl: 'https://media.dodostatic.net/image/r:233x233/11ef9a30c3246adebecb726548cbede9.avif',
+                  price: 990,
+                  items: [{ price: 990 }],
+                },
+                {
+                  id: 11,
+                  name: 'Классическая',
+                  imageUrl: 'https://media.dodostatic.net/image/r:233x233/11ef9a30c3246adebecb726548cbede9.avif',
+                  price: 990,
+                  items: [{ price: 990 }],
+                },
+                {
+                  id: 12,
                   name: 'Классическая',
                   imageUrl: 'https://media.dodostatic.net/image/r:233x233/11ef9a30c3246adebecb726548cbede9.avif',
                   price: 990,
