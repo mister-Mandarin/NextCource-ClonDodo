@@ -1,0 +1,157 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id Int @id @default(autoincrement())
+
+  fullName   String
+  email      String   @unique
+  phone      String?  @unique
+  password   String
+  role       UserRole @default(USER)
+  verified   DateTime
+  // provider авторизация через какую соцсеть
+  provider   String?
+  providerId String?
+
+  cart              Cart?
+  orders            Order[]
+  verificationToken VerificationToken?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Product {
+  id Int @id @default(autoincrement())
+
+  name     String
+  imageUrl String
+
+  category        Category         @relation(fields: [categoryId], references: [id])
+  categoryId      Int
+  ingredients     Ingredient[]
+  productVariants ProductVariant[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ProductVariant {
+  id Int @id @default(autoincrement())
+
+  price     Int
+  size      Int?
+  pizzaType Int?
+
+  product   Product    @relation(fields: [productId], references: [id])
+  productId Int
+  cartItems CartItem[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Category {
+  id   Int    @id @default(autoincrement())
+  name String @unique
+
+  products Product[]
+}
+
+model Ingredient {
+  id Int @id @default(autoincrement())
+
+  name     String
+  price    Int
+  imageUrl String
+
+  products  Product[]
+  cartItems CartItem[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Cart {
+  id Int @id @default(autoincrement())
+
+  token       String? // для того, была корзина у неавторизованного пользователеля
+  totalAmount Int     @default(0)
+
+  user     User?      @relation(fields: [userId], references: [id])
+  userId   Int?       @unique
+  cartItem CartItem[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model CartItem {
+  id Int @id @default(autoincrement())
+
+  quantity Int @default(1)
+
+  productVariant   ProductVariant @relation(fields: [productVariantId], references: [id])
+  productVariantId Int
+  cart             Cart           @relation(fields: [cartId], references: [id])
+  cartId           Int
+  ingredients      Ingredient[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Order {
+  id Int @id @default(autoincrement())
+
+  token       String
+  totalAmount Int
+  status      OrderStatus
+  paymentId   String? // id в платежной системе
+
+  items Json
+
+  fullName String
+  email    String
+  phone    String
+  address  String
+  comment  String?
+
+  user   User? @relation(fields: [userId], references: [id])
+  userId Int?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum OrderStatus {
+  PENDING // создал заказ
+  SUCCESS // оплатил
+  CANCELED // отменил
+}
+
+model VerificationToken {
+  id Int @id @default(autoincrement())
+
+  user   User @relation(fields: [userId], references: [id])
+  userId Int  @unique
+
+  token String
+
+  createdAt DateTime @default(now())
+
+  // проверяется на уникальность обоих полей
+  @@unique([userId, token])
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}

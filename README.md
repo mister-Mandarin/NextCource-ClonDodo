@@ -18,4 +18,6 @@
 - React-use (библиотека хуков)
 - Zustand (библиотека состояний)
 - prisma (для рабты с базой данных)
-- prisma/client (для рабты с базой данных в Next.js)
+    - prisma/client (для рабты с бд в Next.js)
+    - сервер Vercel, бд Neon (postgres)
+- bcrypt (для хеширования паролей)
