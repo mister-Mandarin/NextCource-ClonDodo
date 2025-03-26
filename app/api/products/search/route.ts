@@ -5,10 +5,10 @@ export async function GET(req: NextRequest) {
   const query = req.nextUrl.searchParams.get('query') || '';
 
   const products = await prisma.product.findMany({
-    // убираем чувствительность к регистру
     where: {
       name: {
         contains: query,
+        // убираем чувствительность к регистру
         mode: 'insensitive',
       },
     },

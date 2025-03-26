@@ -1,4 +1,4 @@
-export { Header } from './Header';
+export { Header } from './Header/Header';
 export { Container } from './Container';
 export { Categories } from './TopBar/Categories';
 export { Sort } from './TopBar/Sort';
