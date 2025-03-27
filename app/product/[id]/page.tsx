@@ -1,6 +1,15 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Container } from '@/components/shared';
 
-export default function Product({ params }: Readonly<{ params: { id: string } }>) {
-  return <Container>{params.id}</Container>;
+type Params = Promise<{ id: string[] }>;
+
+export default async function Product({ params }: { params: Params }) {
+  const { id } = await params;
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Container>
+        <div>Product {id}</div>
+      </Container>
+    </Suspense>
+  );
 }
