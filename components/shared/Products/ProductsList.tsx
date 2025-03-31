@@ -4,7 +4,8 @@ import { ProductCard } from '@/components/shared/Products/ProductCard';
 import { cn } from '@/lib/utils';
 import { useIntersection } from 'react-use';
 import React, { useEffect } from 'react';
-import { useCategoryStore } from '@/store/category';
+import { usePizzaStore } from '@/store/store';
+import { CategoryProps } from '@/store/category.slice';
 
 interface Props {
   title: string;
@@ -15,7 +16,7 @@ interface Props {
 }
 
 export function ProductsList({ title, items, className, listClassName, categoryId }: Props) {
-  const setActiveCategoryId = useCategoryStore((state) => state.setActiveId);
+  const { setActiveId } = usePizzaStore() as CategoryProps;
   const intersectionRef = React.useRef<HTMLDivElement>(null!);
   const intersection = useIntersection(intersectionRef, {
     threshold: 0.4,
@@ -24,9 +25,9 @@ export function ProductsList({ title, items, className, listClassName, categoryI
   useEffect(() => {
     if (intersection?.isIntersecting) {
       console.log('visible', title, categoryId);
-      setActiveCategoryId(categoryId);
+      setActiveId(categoryId);
     }
-  });
+  }, [intersection]);
 
   return (
     <div className={className} id={`${title}`} ref={intersectionRef}>

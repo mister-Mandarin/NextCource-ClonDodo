@@ -1,6 +1,7 @@
 'use client';
 import { cn } from '@/lib/utils';
-import { useCategoryStore } from '@/store/category';
+import { usePizzaStore } from '@/store/store';
+import { CategoryProps } from '@/store/category.slice';
 
 const categories = [
   { id: 1, name: 'Пиццы' },
@@ -13,7 +14,7 @@ const categories = [
 ];
 
 export function Categories() {
-  const activeCategoryId = useCategoryStore((state) => state.activeId);
+  const { activeId } = usePizzaStore() as CategoryProps;
   return (
     <div className={cn('inline-flex flex-wrap gap-1 bg-gray-50 p-1 rounded-2xl')}>
       {categories.map((category) => (
@@ -22,7 +23,7 @@ export function Categories() {
           href={`/#${category.name}`}
           className={cn(
             'flex items-center font-bold h-11 px-5 rounded-2xl hover:bg-white hover:shadow-md hover:shadow-gray-200',
-            category.id === activeCategoryId && 'bg-white shadow-md shadow-gray-200 text-primary',
+            category.id == activeId && 'bg-white shadow-md shadow-gray-200 text-primary',
           )}>
           {category.name}
         </a>

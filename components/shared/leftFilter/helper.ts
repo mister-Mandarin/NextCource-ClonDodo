@@ -7,6 +7,7 @@ interface ItemsProps {
 
 export interface FilterCheckboxProps {
   text: string;
+  name: string;
   value: string;
   endAdornment?: React.ReactNode;
   onCheckedChange?: (checked: boolean) => void;
@@ -15,23 +16,12 @@ export interface FilterCheckboxProps {
 
 export interface CheckboxFiltersProps {
   title: string;
-  items: FilterCheckboxProps[];
-  defaultItems?: FilterCheckboxProps[];
   limit?: number;
   searchInputPlaceholder?: string;
-  onChange?: (values: string[]) => void;
-  defaultValues?: ItemsProps[];
-  className?: string;
+  onClickCheckbox?: (id: string) => void;
+  selectedIngredients?: Set<string>;
+  name?: string;
 }
-
-// export const DEFAULT_ITEMS: ItemsProps[] = [
-//   { text: 'Сырный соус', value: '1' },
-//   { text: 'Моццарелла', value: '2' },
-//   { text: 'Чеснок', value: '3' },
-//   { text: 'Солённые огурчики', value: '4' },
-//   { text: 'Красный лук', value: '5' },
-//   { text: 'Томаты', value: '6' },
-// ];
 
 export const ITEMS: ItemsProps[] = [
   { text: 'Пепперони', value: '1' },

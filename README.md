@@ -18,6 +18,7 @@
 - React-use (библиотека хуков)
     - useIntersection
     - useClickAway
+    - useSet
 - Zustand (библиотека состояний)
 - prisma (для рабты с базой данных)
     - prisma/client (для рабты с бд в Next.js)
